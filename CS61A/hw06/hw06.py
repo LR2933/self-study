@@ -284,7 +284,11 @@ def two_list(vals, counts):
     Link(1, Link(1, Link(3, Link(3, Link(2)))))
     """
     "*** YOUR CODE HERE ***"
-
+    l = []
+    for i in range(len(counts)):
+        l.extend([str(vals[i])] * counts[i])
+    n = int(''.join(l))
+    return store_digits(n)
 
 class Tree:
     """A tree has a label and a list of branches.
