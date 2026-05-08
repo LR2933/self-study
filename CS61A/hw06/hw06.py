@@ -231,12 +231,11 @@ def prune_small(t, n):
     >>> t3
     Tree(6, [Tree(1), Tree(3, [Tree(1), Tree(2)])])
     """
-    while ____:
-        largest = max(____, key=____)
-        ____
+    while len(t.branches) > n:
+        largest = max(list(b.label for b in t.branches), key=abs)
+        t.branches = [b for b in t.branches if b.label != largest]
     for b in t.branches:
-        ____
-
+        prune_small(b, n)
 
 def delete(t, x):
     """Remove all nodes labeled x below the root within Tree t. When a non-leaf
