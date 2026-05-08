@@ -208,6 +208,11 @@ def deep_map_mut(func, s: Link) -> None:
     (2 ((4 6)) 8)
     """
     "*** YOUR CODE HERE ***"
+    check = s
+    while check != Link.empty:
+        s.first = func(s.first)
+        check = check.rest
+    return None
 
 def prune_small(t, n):
     """Prune the tree mutatively, keeping only the n branches
