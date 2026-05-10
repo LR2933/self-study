@@ -8,18 +8,14 @@ class Solution:
     def minDepth(self, root: Optional[TreeNode]) -> int:
         if not root:
             return 0
-        self.min_d = float('inf')
 
-        def dfs(r, c = 1):
-            if not r.left and not r.right:
-                self.min_d = min(self.min_d, c)
+        left_height = self.minDepth(root.left)
+        right_height = self.minDepth(root.right)
 
-            if r.left:
-                dfs(r.left, c + 1)
-            if r.right:
-                dfs(r.right, c + 1)
+        if not root.left:
+            return right_height + 1
+        if not root.right:
+            return left_height + 1
 
-        dfs(root)
-
-        return self.min_d
+        return min(left_height, right_height) + 1
 
