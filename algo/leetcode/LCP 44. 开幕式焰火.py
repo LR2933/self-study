@@ -7,19 +7,13 @@
 class Solution:
     def numColor(self, root: TreeNode) -> int:
         s = set()
-
-        def f(r):
-            nonlocal s
-            if r == None:
-                return
-
-            s.add(r.val)
-            f(r.left)
-            f(r.right)
-
-        f(root)
-
+        stack = [root]
+        while stack:
+            curr = stack.pop()
+            s.add(curr.val)
+            if curr.left:
+                stack.append(curr.left)
+            if curr.right:
+                stack.append(curr.right)
         return len(s)
-
-
 
