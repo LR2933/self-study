@@ -118,7 +118,18 @@ class FreeChecking(Account):
     withdraw_fee: int = 1
     free_withdrawals: int = 2
 
-    "*** YOUR CODE HERE ***"
+    def withdraw(self, amount: int) -> int | str:
+        if self.free_withdrawals == 0:
+            amount += self.withdraw_fee
+        else:
+            self.free_withdrawals -= 1
+
+        if amount > self.balance:
+            return "Insufficient funds"
+        if amount > self.max_withdrawal:
+            return "Cant't withdraw that amount"
+        self.balance = self.balance - amount
+        return self.balance
 
 
 def without(s: Link, i: int) -> Link:
