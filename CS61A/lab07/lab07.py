@@ -143,8 +143,14 @@ def without(s: Link, i: int) -> Link:
     >>> without(s, 4)  # There is no index 4, so all of s is retained.
     Link(3, Link(5, Link(7, Link(9))))
     """
-    "*** YOUR CODE HERE ***"
+    if s is Link.empty:
+        return s
 
+    if i == 0:
+        return Link(s.rest.first, s.rest.rest)
+    
+    else:
+        return Link(s.first, without(s.rest, i - 1))
 
 def duplicate_link(s: Link, val: int) -> None:
     """Mutates s so that each element equal to val is followed by another val.
