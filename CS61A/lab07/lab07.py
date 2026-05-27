@@ -168,5 +168,9 @@ def duplicate_link(s: Link, val: int) -> None:
     >>> z
     Link(1, Link(2, Link(2, Link(2, Link(2, Link(3))))))
     """
-    "*** YOUR CODE HERE ***"
+    if s is Link.empty:
+        return
+    duplicate_link(s.rest, val)
+    if s.first == val:
+        s.rest = Link(s.first, s.rest)
 
