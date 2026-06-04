@@ -6,7 +6,12 @@
   )
 )
 
-(define (composed f g) 'YOUR-CODE-HERE)
+(define (composed f g)
+  (define(y x)
+    (f (g x))
+  )
+  y
+)
 
 (define (repeat f n) 'YOUR-CODE-HERE)
 
