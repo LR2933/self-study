@@ -31,7 +31,12 @@
       b
       a))
 
-(define (gcd a b) 'YOUR-CODE-HERE)
+(define (gcd a b)
+  (if (zero? b)
+      a
+      (gcd (min a b) (modulo (max a b) (min a b )) )
+  )
+)
 
 (define (exp b n)
   (define (helper n so-far) "YOUR CODE HERE")
