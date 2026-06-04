@@ -47,6 +47,24 @@
   )
   (helper n 1))
 
-(define (swap s) 'YOUR-CODE-HERE)
+(define (swap s) 
+  (define (helper sofar rest)
+    (cond
+        ((null? rest) sofar)
+        ((null? (cdr rest))  (append sofar (list (car rest))))
+        (else
+          (helper
+            (append
+              sofar
+              (list (car (cdr rest)))
+              (list (car rest))
+            )
+            (cdr (cdr rest))
+          )
+        )
+    )
+  )
+  (helper () s)
+)
 
 (define (make-adder num) 'YOUR-CODE-HERE)
