@@ -67,4 +67,9 @@
   (helper () s)
 )
 
-(define (make-adder num) 'YOUR-CODE-HERE)
+(define (make-adder num)
+  (define (adder inc)
+    (+ num inc)
+  )
+  adder
+)
