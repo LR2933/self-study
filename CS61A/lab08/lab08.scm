@@ -39,7 +39,12 @@
 )
 
 (define (exp b n)
-  (define (helper n so-far) "YOUR CODE HERE")
+  (define (helper n so-far)
+    (if (= n 0)
+        so-far
+        (helper (- n 1) (* b so-far))
+    )
+  )
   (helper n 1))
 
 (define (swap s) 'YOUR-CODE-HERE)
