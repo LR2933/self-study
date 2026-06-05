@@ -24,4 +24,9 @@
   )
 )
 
-(define (no-repeats s) 'YOUR-CODE-HERE)
+(define (no-repeats s)
+  (if (null? s)
+      '()
+      (cons (car s) (no-repeats (filter (lambda (x) (not (= x (car s)))) (cdr s))))
+  )
+)
