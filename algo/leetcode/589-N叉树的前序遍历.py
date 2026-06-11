@@ -11,9 +11,11 @@ class Solution:
         if not root:
             return []
 
-        ret = [root.val]
-        for r in root.children:
-            ret.extend(self.preorder(r))
+        stack, ret = [root], []
+
+        while stack:
+            node = stack.pop()
+            ret.append(node.val)
+            stack.extend(reversed(node.children))
 
         return ret
-
