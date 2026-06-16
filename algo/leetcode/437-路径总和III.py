@@ -6,25 +6,27 @@
 #         self.right = right
 class Solution:
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
+        memo = defaultdict(int)
+        memo[0] = 1
         count = 0
-
-        def dfs(node):
-            if not node:
-                return
-
-            helper(node, 0)
-            dfs(node.left)
-            dfs(node.right)
-
-        def helper(node, total):
+        def dfs(node, total):
             nonlocal count
             if not node:
                 return
-            total += node.val
-            if total == targetSum:
-                count += 1
-            helper(node.left, total)
-            helper(node.right, total)
 
-        dfs(root)
+            total += node.val
+
+            target = total - targetSum
+            if target in memo:
+                count += memo[target]
+
+            memo[total] += 1
+
+            dfs(node.left, total)
+            dfs(node.right, total)
+
+            memo[total] -= 1
+
+        dfs(root, 0)
         return count
+
