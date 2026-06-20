@@ -54,7 +54,14 @@ class Frame:
         if len_link(formals) != len_link(vals):
             raise SchemeError('Incorrect number of arguments to function call')
         # BEGIN PROBLEM 8
-        "*** YOUR CODE HERE ***"
+        def helper(f, v, env):
+            if f is Link.empty:
+                return
+            env.define(f.first, v.first)
+            helper(f.rest, v.rest, env)
+        frame = Frame(self)
+        helper(formals, vals, frame)
+        return frame
         # END PROBLEM 8
 
 ##############
@@ -105,7 +112,7 @@ class MuProcedure(Procedure):
      -----------------
             \   ^__^
              \  (oo)\_______
-                (__)\       )\/\
+                (__)\       \/\
                     ||----w |
                     ||     ||
     """
