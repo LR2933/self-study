@@ -44,6 +44,8 @@
 ;; implement solution-code
 (define (solution-code problem solution)
   ; BEGIN PROBLEM 16
-  'replace-this-line)
+  (cond ((null? problem) '())
+        ((not (pair? problem)) (if (equal? problem '_____) solution problem))
+        (else (cons (solution-code (car problem) solution) (solution-code (cdr problem) solution)))))
   ; END PROBLEM 16
   
