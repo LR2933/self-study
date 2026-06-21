@@ -8,9 +8,13 @@
 ;; Returns a list of two-element lists
 (define (enumerate s)
   ; BEGIN PROBLEM 14
-  'replace-this-line
+  (define (helper s c)
+    (if (null? s)
+      '()
+      (cons (list c (car s)) (helper (cdr s) (+ c 1)))))
+  (helper s 0))
   ; END PROBLEM 14
-  )
+  
 
 
 ;; Problem 15
