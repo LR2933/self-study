@@ -203,7 +203,13 @@ def make_let_frame(bindings, env):
         raise SchemeError('bad bindings list in let form')
     names = vals = nil
     # BEGIN OPTIONAL PROBLEM 1
-    "*** YOUR CODE HERE ***"
+    while bindings:
+        binding = bindings.first
+        names = Link(binding.first, names)
+        validate_form(binding.rest, 1, 1)
+        vals = Link(scheme_eval(binding.rest.first, env), vals)
+        bindings = bindings.rest
+    validate_formals(names)
     # END OPTIONAL PROBLEM 1
     return env.make_child_frame(names, vals)
 
