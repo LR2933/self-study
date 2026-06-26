@@ -78,7 +78,18 @@ def eval_and(expressions):
     >>> calc_eval(Link("and", nil))
     True
     """
-    "*** YOUR CODE HERE ***"
+
+    ret = True
+    while expressions is not Link.empty:
+        curr = calc_eval(expressions.first)
+        if curr is scheme_f:
+            return False
+        else:
+            ret = curr
+        expressions = expressions.rest
+
+    return ret
+
 
 bindings = {}
 
