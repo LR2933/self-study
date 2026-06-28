@@ -3,7 +3,12 @@
 
 (define (square n) (* n n))
 
-(define (pow-expr base exp) 'YOUR-CODE-HERE)
+(define (pow-expr base exp)
+  (cond
+    ((equal? exp 0) 1)
+    ((equal? exp 1) `(* ,base 1))
+    ((odd? exp) `(* ,base ,(pow-expr base (- exp 1))))
+    ((even? exp) `(square ,(pow-expr base (/ exp 2))))))
 
 (define-macro (repeat n expr)
   `(repeated-call ,n ___))
