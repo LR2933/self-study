@@ -32,7 +32,7 @@ INSERT INTO sizes VALUES
 
 -- All dogs with parents ordered by decreasing height of their parent
 CREATE TABLE by_parent_height AS
-  SELECT "REPLACE THIS LINE WITH YOUR SOLUTION";
+  select child from parents inner join dogs on parents.parent = dogs.name order by dogs.height desc;
 
 
 -- The size of each dog
