@@ -3,7 +3,7 @@ CREATE table newest AS
 
 
 CREATE table dog_movies AS 
-  SELECT "REPLACE THIS LINE WITH YOUR SOLUTION";
+  SELECT title, character from titles inner join principals on titles.tconst = principals.tconst where character like "%dog%";
 
 
 CREATE table leads AS 
