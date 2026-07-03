@@ -1,5 +1,5 @@
 CREATE table newest AS
-  SELECT "REPLACE THIS LINE WITH YOUR SOLUTION";
+  SELECT title, year from titles order by year desc limit 10;
 
 
 CREATE table dog_movies AS 
