@@ -7,7 +7,11 @@ CREATE table dog_movies AS
 
 
 CREATE table leads AS 
-  SELECT "REPLACE THIS LINE WITH YOUR SOLUTION";
+  select name, count(*) as lead_roles from names inner join principals 
+    on names.nconst = principals.nconst 
+    where ordering = 1 
+    group by name 
+    having lead_roles > 10;
 
 
 CREATE table long_movies AS 
