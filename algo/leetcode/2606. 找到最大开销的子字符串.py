@@ -1,13 +1,16 @@
 class Solution:
     def maximumCostSubstring(self, s: str, chars: str, vals: List[int]) -> int:
-        dic = {v:i for i, v in enumerate(chars)}
-        n = len(s)
+        alphabet = 'abcdefghijklmnopqrstuvwxyz'
+        cost_map = {c:i + 1 for i, c in enumerate(alphabet)}
+
+        for i, c in zip(chars, vals):
+            cost_map[i] = c
+
         ans = 0
         last = 0
 
-        for i in range(n):
-            val = vals[dic[s[i]]] if s[i] in chars else (ord(s[i]) - ord('a') + 1)
-            last = max(last, 0) + val
+        for char in s:
+            last = max(last, 0) + cost_map[char]
             ans = max(ans, last)
 
         return ans
