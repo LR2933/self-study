@@ -1,23 +1,10 @@
 class Solution:
     def minimumTotal(self, triangle: List[List[int]]) -> int:
         n = len(triangle)
-        m = len(triangle[-1])
-        old = [0] * m
+        dp = triangle[-1].copy()
 
-        for i in range(n):
-            k = len(triangle[i])
-            new = old.copy()
-            for j in range(k):
-                if j == 0:
-                    new[j] = old[j]
-                elif j == k - 1:
-                    new[j] = old[j - 1]
-                else:
-                    new[j] = min(old[j], old[j - 1])
-                
-                new[j] += triangle[i][j] 
+        for i in range(n - 2, -1, -1):
+            for k in range(len(triangle[i])):
+                dp[k] = min(dp[k + 1], dp[k]) + triangle[i][k]
 
-            old = new.copy()
-
-        return min(old)
-
+        return dp[0]
