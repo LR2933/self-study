@@ -1,0 +1,71 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\begin{document}
+\noindent \textbf{Problem 2.}
+\bigbreak
+\noindent \textbf{(a)}
+\smallbreak
+the truth table shows that the $(P \land \neg Q) \lor (P \land Q)$ is equivalent to $P$.
+$$
+\begin{array}{cc|cccc}
+\hline
+P & Q &  \neg Q  &  P \land \neg Q  &  P \land Q  &  (P \land \neg Q) \lor (P \land Q) \\
+\hline\hline
+T & T &   F   &    F      &    T    &            T         \\
+T & F &   T   &    T      &    F    &            T         \\
+F & T &   F   &    F      &    F    &            F         \\
+F & F &   T   &    F      &    F    &            F         \\
+\hline
+\end{array}
+$$
+\smallbreak
+\bigbreak
+\noindent \textbf{(b)}
+\smallbreak
+$(A - B)$ is equivalent to $A \land \neg B$
+\smallbreak
+the truth table about $(A - B) \lor (A \land B)$ is
+$$
+\begin{array}{cc|cccc}
+\hline
+A & B & \neg B &  A \land \neg B  &  A \land B  & (A - B) \lor (A \land B)\\
+\hline\hline
+T & T &  F  &    F      &    T    &         T\\
+T & F &  T  &    T      &    F    &         T\\
+F & T &  F  &    F      &    F    &         F\\
+F & F &  T  &    F      &    F    &         F\\
+\hline
+\end{array}
+$$
+\smallbreak
+we can see the $A$ is equivalent to $(A - B) \lor (A \land B)$
+\smallbreak
+so $x \in A \iff x \in ((A - B) \lor (A \land B))$
+\bigbreak
+\bigbreak
+
+\noindent \textbf{Problem 3.}
+\bigbreak
+\noindent \textbf{(a)}
+sixish($n$) := $\exists m \exists k.((6 \cdot 10^k + m = n) \land m < 10^k )$
+\smallbreak
+\noindent \textbf{(b)}
+$\exists m \exists n \forall k.Q(m) \land Q(n) \land k \neq m \land k \neq n \land \neg Q(k)$
+\smallbreak
+\noindent \textbf{(c)}
+$\forall k \exists n \exists m.(isEven(k) \land k > 2 ) \implies (m + n = k) \land isPrime(n) \land isPrime(m)$
+\smallbreak
+\noindent \textbf{(d)}
+$\forall n.n > 100 \implies $sixish(n)
+\smallbreak
+\noindent \textbf{(e)}
+it is not equivalent because when n = 1, R(n) should be True but we can't find any b $\in \mathbb{N}$ to make 1 = 2b + 5
+\bigbreak
+\bigbreak
+
+\noindent \textbf{Problem 4.}
+\bigbreak
+
+
+\end{document}
