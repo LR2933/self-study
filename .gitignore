@@ -11,3 +11,8 @@
 **/tests/__init__.py
 
 /algo/temp.py
+**.aux
+**.fdb_latexmk
+**.fls
+**.log
+**.synctex.gz
