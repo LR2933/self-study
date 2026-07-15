@@ -1,6 +1,8 @@
 \documentclass[12pt]{article}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{parskip}
 \begin{document}
 \noindent \textbf{Problem 2.}
 \bigbreak
@@ -66,6 +68,26 @@ it is not equivalent because when n = 1, R(n) should be True but we can't find a
 
 \noindent \textbf{Problem 4.}
 \bigbreak
+\noindent \textbf{(a)}
 
+We use induction.
+
+\begin{proof}
+    Let $P(n)$ be the statement that if $Q(x_1 \cdot x_2 \cdots x_n)$ is true, then at least one of $Q(x_1)$, $Q(x_2)$, $\dots$, $Q(x_n)$ must be true.
+
+    \textbf{Base case:} For $n = 1$, the statement holds trivially.For $n = 2$, if $Q(x_1 \cdot X_2)$ is true, then at least one of $Q(x_1)$ or $Q(x_2)$ must be true which holds by the given premise.
+
+    \textbf{Inductive hypothesis:} Assume that $P(n)$ is true for some $n \ge 1$. That is, if $Q(x_1 \cdot x_2 \cdots x_n)$ is true, then at least one of $Q(x_1), \dots, Q(x_n)$ must be true.
+
+    \textbf{Inductive step}: We assume that for $n \ge 1$, P($n$) is true. We have to prove $P(n + 1)$ is true, which means we have to prove if $Q(x_1 \cdot x_2 \cdots x_{n + 1})$ is true,then at least one of $Q(x_1)$ $\ldots$ $Q(x_{n + 1})$ must be true. Since the $x_1 \cdot x_{n + 1}$ can be written as $(x_1 \cdot x_n) \cdot x_{n + 1}$, so let $a$ be $x_1 \cdot x_2 \cdots x_n$ and b be $x_{n + 1}$, if $Q(a \cdot b)$ is true then one of $Q(a)$ or $Q(b)$ must be true.
+
+    \begin{itemize}
+        \item Case 1: if $Q(a)$ is true, then $Q(x_1 \cdots x_n)$ is true by the inductive hypothesis
+        \item Cast 2: if $Q(b)$ is true, then $Q(x_{n + 1}$) is true which proved the P($n + 1$) is true directly.
+    \end{itemize}
+
+    So we proved $P(n)$ is true for all $n \ge 1$.
+
+\end{proof}
 
 \end{document}
