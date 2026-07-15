@@ -75,19 +75,48 @@ We use induction.
 \begin{proof}
     Let $P(n)$ be the statement that if $Q(x_1 \cdot x_2 \cdots x_n)$ is true, then at least one of $Q(x_1)$, $Q(x_2)$, $\dots$, $Q(x_n)$ must be true.
 
-    \textbf{Base case:} For $n = 1$, the statement holds trivially.For $n = 2$, if $Q(x_1 \cdot X_2)$ is true, then at least one of $Q(x_1)$ or $Q(x_2)$ must be true which holds by the given premise.
+    \textbf{Base case:} For $n = 1$, the statement holds trivially.For $n = 2$, if $Q(x_1 \cdot x_2)$ is true, then at least one of $Q(x_1)$ or $Q(x_2)$ must be true which holds by the given premise.
 
     \textbf{Inductive hypothesis:} Assume that $P(n)$ is true for some $n \ge 1$. That is, if $Q(x_1 \cdot x_2 \cdots x_n)$ is true, then at least one of $Q(x_1), \dots, Q(x_n)$ must be true.
 
-    \textbf{Inductive step}: We assume that for $n \ge 1$, P($n$) is true. We have to prove $P(n + 1)$ is true, which means we have to prove if $Q(x_1 \cdot x_2 \cdots x_{n + 1})$ is true,then at least one of $Q(x_1)$ $\ldots$ $Q(x_{n + 1})$ must be true. Since the $x_1 \cdot x_{n + 1}$ can be written as $(x_1 \cdot x_n) \cdot x_{n + 1}$, so let $a$ be $x_1 \cdot x_2 \cdots x_n$ and b be $x_{n + 1}$, if $Q(a \cdot b)$ is true then one of $Q(a)$ or $Q(b)$ must be true.
+    \textbf{Inductive step}: We assume that for $n \ge 1$, P($n$) is true. We have to prove $P(n + 1)$ is true, which means we have to prove if $Q(x_1 \cdot x_2 \cdots x_{n + 1})$ is true,then at least one of $Q(x_1)$ $\ldots$ $Q(x_{n + 1})$ must be true. Since the $x_1 \cdot \ldots \cdot x_{n + 1}$ can be written as $(x_1 \cdot \ldots \cdot x_n) \cdot x_{n + 1}$, so let $a$ be $x_1 \cdot x_2 \cdots x_n$ and b be $x_{n + 1}$, if $Q(a \cdot b)$ is true then one of $Q(a)$ or $Q(b)$ must be true.
 
     \begin{itemize}
         \item Case 1: if $Q(a)$ is true, then $Q(x_1 \cdots x_n)$ is true by the inductive hypothesis
-        \item Cast 2: if $Q(b)$ is true, then $Q(x_{n + 1}$) is true which proved the P($n + 1$) is true directly.
+        \item Case 2: if $Q(b)$ is true, then $Q(x_{n + 1}$) is true which proved the P($n + 1$) is true directly.
     \end{itemize}
 
     So we proved $P(n)$ is true for all $n \ge 1$.
 
 \end{proof}
+
+\newpage
+
+\noindent \textbf{(b)}
+\smallbreak
+For part (a), we should choose $Q(x)$ to be the predicate:"$x$ is irrational"
+
+To apply the result from part(a), we have to prove the case of $n = 2$ holds.
+
+Prove it by contrapositive
+\begin{proof}
+$Q(x_1 \cdot x_2)$ $\implies$ $Q(x_1) \lor Q(x_2)$ is equivalent to its contrapositive $\lnot Q(x_1) \land \lnot Q(x_2)$ $\implies$ $\lnot Q(x_1 \cdot x_2)$, So we can prove ($x_1$ and $x_2$ are rational) \textsc{implies} ($x_1 \cdot x_2$ is rational) directly.
+
+Since $x_1$ and $x_2$ are rational, we can let $x_1$ be $\frac{a}{b}$ and $x_2$ be $\frac{c}{d}$($a, b, c, d \in \mathbb{N^+}$). And $x_1 \cdot x_2$ will be $\frac{a \cdot c}{b \cdot d}$, because both $a \cdot c$ and $b \cdot d$ are integer, the $\frac{a \cdot c}{b \cdot d}$ must be rational, so we proved $\lnot Q(x_1 \cdot x_2)$, as required.
+\end{proof}
+
+\bigbreak
+\noindent \textbf{(c)}
+\smallbreak
+proof by contradiction.
+
+\begin{proof}
+Assume the sake of contradiction that $Q(x_1 \cdot x_2) \land (\lnot Q(x_1) \land \lnot Q(x_2))$.
+
+That tells us $x_1$ and $x_2$ is rational, so we can let $x_1 = \frac{a}{b}$ and $x_2 = \frac{c}{d}$($a, b, c, d \in \mathbb{Z}$ with $b, d \neq 0$)
+
+Then $x_1 \cdot x_2$ become to $\frac{a \cdot c}{b \cdot d}$, which is rational. $\Rightarrow\!\Leftarrow$
+\end{proof}
+
 
 \end{document}
