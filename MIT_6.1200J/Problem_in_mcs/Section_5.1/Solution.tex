@@ -1,0 +1,33 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{parskip}
+\begin{document}
+
+\noindent \textbf{Problem 5.1}
+\smallbreak
+\begin{proof}
+    The proof is by induction. Let $P(n)$ be the proposition that there for all n $\ge$ 1, the set with the length of n always exist an mininum element.
+    \textbf{Base case:} When $n = 1$, the set contain only one real number. Naturally, this single element is the minimum element in the set. Thus $p(1)$ is true.
+
+    \textbf{Inductive hypothesis:} Assume that $p(k)$ is true for an arbitrary integer $k \ge 1$. That is, any set of real number with $k$ element has a minimum element.
+
+    \textbf{Inductive step:} We want to prove that $P(k + 1)$ holds. Let $S$ be a arbitrary set with $k + 1$ element.
+
+    We can remove an element, says $x$ , from $S$. The remaining set $S' = S \setminus x$ has exactly $k$ element. By the inductive hypothesis, $S'$ must have a minimum, which we call m. 
+
+    Now we compare $x$ with $m$:
+    \begin{itemize}
+        \item If $x < m$, then x is smaller than all element in $S'$, so x is the minimum of $S$.
+        \item If $x \ge m$, then m is smaller than or equal to all element in the $S$, so m is the minimum of $S$.
+    \end{itemize}
+    In either case, the set $S$ with $k + 1$ element has a minimum element. This proves that $p(k + 1)$ is true.
+
+    So wo proved $p(n)$ is true for all $n \ge 1$.
+
+\end{proof}
+
+\end{document}
+
+
