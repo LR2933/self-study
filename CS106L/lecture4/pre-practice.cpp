@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <ostream>
 #include <string>
  
 // ============================================================
@@ -18,7 +19,7 @@
 void exercise1_cout() {
     std::cout << "=== Exercise 1: cout ===\n";
 
-    // YOUR CODE HERE
+    std::cout << "Hello, Streams!\n" << 42 << '\n' << 3.14 ;
 
     std::cout << "\n";
 }
@@ -44,7 +45,11 @@ void exercise2_cin() {
     std::string name;
     int number;
  
-    // YOUR CODE HERE
+    std::cout << "Enter your name:";
+    std::cin >> name;
+    std::cout << "Enter your favourite number:";
+    std::cin >> number;
+    std::cout << "Hello " << name << ", your favorite number is " << number << '!';
   
     std::cout << "\n";
 }
@@ -73,6 +78,17 @@ void exercise3_ofstream() {
  
     // YOUR CODE HERE
     std::ofstream ofile("numbers.txt");
+
+    if (!ofile.is_open()) {
+        std::cout << "Error: could not open file" << std::endl;
+        return;
+    }
+
+    for (int i = 1; i <= 5; i++) {
+        ofile << i << '\n';
+    }
+
+    std::cout << "File written!" << std::endl;
  
     std::cout << "\n";
 }
@@ -94,7 +110,17 @@ void exercise3_ofstream() {
 void exercise4_ifstream() {
     std::cout << "=== Exercise 4: ifstream ===\n";
 
-    // YOUR CODE HERE
+    std::ifstream ifile("numbers.txt");
+
+    if (!ifile.is_open()) {
+        std::cout << "File written!" << std::endl;
+        return;
+    }
+
+    std::string line;
+    while (std::getline(ifile, line)) {
+        std::cout << line << std::endl;
+    }
 
     std::cout << "\n";
 }
@@ -116,8 +142,28 @@ void exercise4_ifstream() {
 void exercise5_combined() {
     std::cout << "=== Exercise 5: Combined ===\n";
  
-    // YOUR CODE HERE
-    
+    std::cout << "please enter 3 numbers:" << std::endl;
+    std::ofstream ofs("user_numbers.txt");
+    int temp;
+    for (int i = 0; i < 3; i++) {
+        std::cin >> temp;
+        ofs << temp << '\n';
+    }
+    ofs.close();
+    std::cout << "\nThe numbers in user_numbers.txt:" << std::endl;
+    std::ifstream ifs("user_numbers.txt");
+    std::string line;
+    while (std::getline(ifs, line)) {
+        std::cout << line << std::endl;
+    }
+    std::cout << "\nThe numbers in user_numbers.txt:" << std::endl;
+    std::ofstream ofs2("user_numbers.txt", std::ios::app);
+    ofs2 << 99;
+    ofs2.close();
+    std::ifstream ifs2("user_numbers.txt");
+    while (std::getline(ifs2, line)) {
+        std::cout << line << std::endl;
+    }
  
     std::cout << "\n";
 }
