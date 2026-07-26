@@ -1,11 +1,13 @@
+from functools import lru_cache
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
         n = len(nums)
         mid = sum(nums) // 2
 
+        @lru_cache
         def dfs(i, left, right):
             if i == n:
-                return True
+                return left == right
 
             if left > mid or right > mid:
                 return False
