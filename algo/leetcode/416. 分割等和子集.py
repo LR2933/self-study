@@ -1,15 +1,13 @@
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
-        @cache
-        def dfs(i, rest):
-            if i < 0:
-                return rest == 0
-
-            if rest < nums[i]:
-                return dfs(i - 1, rest)
-
-            return dfs(i - 1, rest - nums[i]) or dfs(i - 1, rest)
-
+        n = len(nums)
         s = sum(nums)
-        return s % 2 == 0 and dfs(len(nums) - 1, s // 2)
-
+        if s % 2 == 1:
+            return False
+        s //= 2
+        f = [[False] * (s + 1) for _ in range(n + 1)]
+        f[0][0] = True
+        for i, x in enumerate(nums):
+            for j in range(s + 1):
+                f[i + 1][j] = x <= j and f[i][j - x] or f[i][j]
+        return f[n][s]
