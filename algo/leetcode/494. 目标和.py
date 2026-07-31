@@ -2,17 +2,18 @@ class Solution:
     def findTargetSumWays(self, nums: List[int], target: int) -> int:
         s = sum(nums)
         n = len(nums)
-        of = s
-        f = [[0] * (s * 2 + 1) for _ in range(n)]
-        f[0][nums[0] + of] += 1
-        f[0][-nums[0] + of] += 1
+        t = s - abs(target)
+        if t < 0 or t % 2 == 1:
+            return  0
+        t //= 2
+        f = [[0] * (t + 1) for _ in range(n + 1)]
+        f[0][0] = 1
 
-        j_max = s * 2 + 1
-        for i in range(n - 1):
-            for j in range(j_max):
-                if j - nums[i + 1] >= 0:
-                    f[i + 1][j - nums[i + 1]] += f[i][j]
-                if j + nums[i + 1] < j_max:
-                    f[i + 1][j + nums[i + 1]] += f[i][j]
+        for i, x in enumerate(nums):
+            for j in range(t + 1):
+                if j < x:
+                    f[i + 1][j] = f[i][j]
+                else:
+                    f[i + 1][j] = f[i][j] + f[i][j - x]
 
-        return 0 if s < abs(target) else f[-1][target + of]
+        return f[-1][-1]
