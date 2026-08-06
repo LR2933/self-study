@@ -1,17 +1,16 @@
 class Solution:
     def lengthOfLongestSubsequence(self, nums: List[int], target: int) -> int:
+        if sum(nums) < target:
+            return -1
         n = len(nums)
+        f = [[-float("inf")] * (target + 1) for _ in range(n + 1)]
+        f[0][0] = 0
 
-        @cache
-        def dfs(i, t):
-            if i == n:
-                if t == 0:
-                    return 0
+        for i, x in enumerate(nums):
+            for j in range(target + 1):
+                if x > j:
+                    f[i + 1][j] = f[i][j]
                 else:
-                    return -float("inf")
+                    f[i + 1][j] = max(f[i][j - x] + 1, f[i][j])
 
-            return max(1 + dfs(i + 1, t - nums[i]), dfs(i + 1, t))
-        
-        ret = dfs(0, target)
-        return -1 if ret == -float("inf") else ret
-
+        return f[-1][-1] if f[-1][-1] != -float("inf") else - 1
